@@ -8,8 +8,32 @@ namespace SumowanieSzeregowPotegowych
 {
     class Program
     {
+
+        public static void TaylorWithAddingFromTheBeginning()
+        {
+
+        }
+
+        public static void TaylorWithAddingFromTheEnd()
+        {
+
+        }
+
+        public static void CreateNextFromPreviousWithAddingFromTheBeginning()
+        {
+
+        }
+
+        public static void CreateNextFromPreviousWithAddingFromTheEnd()
+        {
+
+        }
+
         static void Main(string[] args)
         {
+
         }
+
+        
     }
 }
