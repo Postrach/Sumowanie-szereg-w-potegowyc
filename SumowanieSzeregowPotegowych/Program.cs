@@ -124,7 +124,7 @@ namespace SumowanieSzeregowPotegowych
         #endregion
 
         static void Main(string[] args)
-        {/*
+        {
             #region variables
             int counter = 0;
 
@@ -132,18 +132,46 @@ namespace SumowanieSzeregowPotegowych
             double range = 0.8; //from -range to range                       
             double step = 0.0000016; //step by which argument is incremented                   
 
+            double averageError = 0.0;
+            double highestError = 0.0;
+            double smallestError = 1000000.0;
             #endregion
 
             for (double i = -range; i < range; )
             {
-                //Console.WriteLine("Current argument: "+ i);
-                //Console.WriteLine("Dla i = {0}:\n Cosinus:\t{1}\n Cos:\t\t{2}", i, Cosinus((double)i), Math.Cos((double)i));
+                Console.WriteLine("Current argument: "+ i);
+                double output = ((Cosinus(i) * Log_OnePlusX(i)) - BuiltInFunctions(i)) / BuiltInFunctions(i);
+                //Console.WriteLine("Bład względny wynosi: " + output );
+                if (averageError < 0)
+                {
+                    averageError *= -1;
+                }
+                if (smallestError < 0)
+                {
+                    smallestError *= -1;
+                }
+                if (highestError < 0)
+                {
+                    highestError *= -1;
+                }
+                averageError += output;
+                if (output < smallestError) {
+                    smallestError = output;
+                }
+
+                if (output > highestError) {
+                    highestError = output;
+                }
                 i += step;
                 counter++;
             }
 
             Console.WriteLine("Amount of arguments: " + counter);
-            */
+            
+            Console.WriteLine("Average error: " + averageError/1000000.0);
+            Console.WriteLine("Smalles error: " + smallestError);
+            Console.WriteLine("Highest error: " + highestError);
+            /*
             for (double i = -0.8; i < 0.8; )
             {
                 Console.WriteLine("---------------------------------------\ni:{0}\n Mine Cos: \t{1}\n Builtin Cos: \t{2}\n\n Mine Log: \t{3}\n Builtin Log:\t{4}\n\n Mine sum:\t{5}\n Builtin sum:\t{6}", i, Cosinus(i), Math.Cos(i), Log_OnePlusX(i), Math.Log(1.0 + i), (Cosinus(i) * Log_OnePlusX(i)), BuiltInFunctions(i));
@@ -151,7 +179,7 @@ namespace SumowanieSzeregowPotegowych
                 i += 0.2;
             }
             //Console.WriteLine(Math.Log(1.0 + 0.5) + "\n" + Log_OnePlusX(0.5));
-            
+            */
             Console.ReadKey();
         }
 
